@@ -8,7 +8,9 @@ class App extends Component {
       {Name: 'Max', age: 28},
       {Name: 'Manu', age: 29},
       {Name: 'Stephanie', age: 26}
-    ]
+    ],
+    otherState: 'some other value',
+    showPersons: false
   }
 
   switchNameHandler = (newName) => {
@@ -36,6 +38,11 @@ class App extends Component {
     );
   }
 
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({showPersons: !doesShow});
+  }
+
   render() {
     const style = {
       backgroundColor: 'white',
@@ -43,6 +50,24 @@ class App extends Component {
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer'
+    }
+
+    let persons = null;
+
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+          {this.state.persons.map(person => {
+            return (
+              <Person
+                key={person.Name}
+                name={person.Name}
+                age={person.age}
+              />
+            );
+          })}
+        </div>
+      );
     }
 
     return (
@@ -53,25 +78,8 @@ class App extends Component {
         <p>This is really working!</p>
         <button
           style={style}
-          onClick={() => this.switchNameHandler('Maximilian!')}>Switch Name</button>
-        <Person
-          name={this.state.persons[0].Name}
-          age={this.state.persons[0].age}
-          click={this.switchNameHandler}
-        />
-        <Person
-          name={this.state.persons[1].Name}
-          age={this.state.persons[1].age}
-          click={this.switchNameHandler.bind(this, 'Max!')}
-          changed={this.nameChangedHandler}
-          >
-          My Hobbies: Racing
-        </Person>
-        <Person
-          name={this.state.persons[2].Name}
-          age={this.state.persons[2].age}
-          click={this.switchNameHandler}
-        />
+          onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        {persons}
       </div>
     );
     // return React.createElement('div', null, React.createElement('h1',null,'Hi, I\'m a react ap!!!'))
