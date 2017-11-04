@@ -46,7 +46,8 @@ class App extends Component {
 
   render () {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -61,15 +62,18 @@ class App extends Component {
           {this.state.persons.map((person, index) => {
             return <Person
               click={() => this.deletePersonHandler(index)}
-              name={person.name} 
+              name={person.name}
               age={person.age}
               key={person.id}
               changed={(event) => this.nameChangedHandler(event, person.id)} />
           })}
         </div>
       );
+
+      style.backgroundColor= 'red';
     }
 
+  
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
@@ -80,7 +84,9 @@ class App extends Component {
         {persons}
       </div>
     );
-    // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
+
+
+
   }
 }
 
