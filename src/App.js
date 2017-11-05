@@ -12,6 +12,7 @@ class App extends Component {
     otherState: 'some other value',
     showPersons: false
   }
+  
 
   nameChangedHandler = ( event, id ) => {
     const personIndex = this.state.persons.findIndex(p => {
