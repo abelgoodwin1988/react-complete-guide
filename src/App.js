@@ -22,13 +22,9 @@ class App extends Component {
       ...this.state.persons[personIndex]
     };
 
-    // const person = Object.assign({}, this.state.persons[personIndex]);
-
     person.name = event.target.value;
-
     const persons = [...this.state.persons];
     persons[personIndex] = person;
-
     this.setState( {persons: persons} );
   }
 
@@ -83,11 +79,11 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Hi, I'm a React App</h1>
-        <p className={classes.join(' ')}>This is really working!</p>
-        <button
-          style={style}
-          onClick={this.togglePersonsHandler}>Toggle Persons</button>
+      <h1>Hi, I'm a React App</h1>
+      <p className={classes.join(' ')}>This is really working!</p>
+      <button
+        style={style}
+        onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
       </div>
     );
