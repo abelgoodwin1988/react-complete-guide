@@ -16,7 +16,7 @@ class App extends Component {
 
   nameChangedHandler = ( event, id ) => {
     const personIndex = this.state.persons.findIndex(p => {
-      return p.id === id;
+      return p.userId === id;
     });
 
     const person = {
@@ -42,7 +42,7 @@ class App extends Component {
   }
 
   render () {
-    
+
     let persons = null;
     let btnClass = null;
 
